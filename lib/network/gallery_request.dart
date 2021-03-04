@@ -61,7 +61,8 @@ class Api {
     // print(_cookieJar);
     if (_cookieJar == null) {
       print('获取的文件系统目录 appSupportPath： ' + Global.appSupportPath);
-      _cookieJar = PersistCookieJar(dir: Global.appSupportPath);
+      _cookieJar =
+          PersistCookieJar(storage: FileStorage(Global.appSupportPath));
     }
     return _cookieJar;
   }
@@ -212,7 +213,7 @@ class Api {
     final AdvanceSearchController _searchController = Get.find();
 
     final List<Cookie> cookies =
-        Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
+        await Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
 
     // logger.d('${cookies.map((e) => e).join('\n')}');
 
@@ -296,8 +297,8 @@ class Api {
 
     // 排序方式检查 不符合则设置 然后重新请求
     // 获取收藏排序设置
-    final FavoriteOrder order = EnumToString.fromString(
-            FavoriteOrder.values, Global?.profile?.ehConfig?.favoritesOrder) ??
+    final FavoriteOrder order = EnumToString.fromString(FavoriteOrder.values,
+            Global?.profile?.ehConfig?.favoritesOrder ?? '') ??
         FavoriteOrder.fav;
     // 排序参数
     final String _order = EHConst.favoriteOrder[order] ?? EHConst.FAV_ORDER_FAV;
@@ -352,7 +353,7 @@ class Api {
     // 在 url使用 nw=always 未解决 自动写入cookie 暂时搞不懂 先手动设置下
     final PersistCookieJar cookieJar = await Api.cookieJar;
     final List<Cookie> cookies =
-        cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
+        await cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
     cookies.add(Cookie('nw', '1'));
     cookieJar.saveFromResponse(Uri.parse(Api.getBaseUrl()), cookies);
 
@@ -404,7 +405,7 @@ class Api {
     // todo 待优化
     final PersistCookieJar cookieJar = await Api.cookieJar;
     final List<Cookie> cookies =
-        cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
+        await cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
     cookies.add(Cookie('nw', '1'));
     cookieJar.saveFromResponse(Uri.parse(Api.getBaseUrl()), cookies);
 

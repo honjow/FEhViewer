@@ -8,7 +8,7 @@ import 'package:fehviewer/pages/gallery/view/gallery_page.dart';
 import 'package:fehviewer/pages/image_view/controller/view_controller.dart';
 import 'package:fehviewer/pages/image_view/view/view_page.dart';
 import 'package:fehviewer/pages/login/login_page.dart';
-import 'package:fehviewer/pages/login/web_login.dart';
+import 'package:fehviewer/pages/login/web_login_in.dart';
 import 'package:fehviewer/pages/setting/about_page.dart';
 import 'package:fehviewer/pages/setting/advanced_setting_page.dart';
 import 'package:fehviewer/pages/setting/controller/tab_setting_controller.dart';
@@ -99,7 +99,7 @@ class AppPages {
     ),
     GetPage(
       name: EHRoutes.webLogin,
-      page: () => const WebLoginView(),
+      page: () => WebLoginViewIn(),
     ),
     GetPage(
       name: EHRoutes.galleryComment,

@@ -23,7 +23,7 @@ class UnlockPageController extends GetxController {
     final AndroidAuthMessages androidStrings = AndroidAuthMessages(
       cancelButton: S.of(context ?? Get.context).cancel,
       signInTitle: '指纹认证',
-      fingerprintHint: '',
+      biometricHint: '',
     );
 
     infoText = '';

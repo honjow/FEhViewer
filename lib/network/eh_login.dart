@@ -83,7 +83,7 @@ class EhUserManager {
 
     //获取Ex cookies
     final List<Cookie> cookiesEx =
-        cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
+        await cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
 
     logger.v('$cookiesEx');
 
@@ -148,7 +148,7 @@ class EhUserManager {
 
     //获取Ex cookies
     final List<Cookie> cookiesEx =
-        cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
+        await cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
     // 处理cookie 存入sp 方便里站图片请求时构建头 否则会403
     final Map<String, String> cookieMapEx = <String, String>{};
 
@@ -199,7 +199,7 @@ class EhUserManager {
 
     //获取Ex cookies
     final List<Cookie> cookiesEx =
-        cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
+        await cookieJar.loadForRequest(Uri.parse(EHConst.EX_BASE_URL));
 
     // 手动指定igneous的情况
     cookiesEx.firstWhere((element) => element.name == 'igneous').value =

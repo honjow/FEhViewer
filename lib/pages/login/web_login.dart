@@ -1,3 +1,4 @@
+/*
 import 'dart:io';
 
 import 'package:fehviewer/const/const.dart';
@@ -8,20 +9,10 @@ import 'package:get/get.dart';
 import 'package:webview_cookie_manager/webview_cookie_manager.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebLoginView extends StatefulWidget {
+class WebLoginView extends StatelessWidget {
   const WebLoginView({
     Key key,
   }) : super(key: key);
-
-  @override
-  _WebLoginViewState createState() => _WebLoginViewState();
-}
-
-class _WebLoginViewState extends State<WebLoginView> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,3 +88,4 @@ class _WebLoginViewState extends State<WebLoginView> {
     return cpf;
   }
 }
+*/

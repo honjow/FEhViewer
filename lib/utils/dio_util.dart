@@ -68,10 +68,10 @@ class HttpManager {
           retryInterval:
               const Duration(seconds: 1), // Interval between each retry
           retryEvaluator: (error) =>
-              error.type != DioErrorType.CANCEL &&
+              error.type != DioErrorType.cancel &&
               error.type !=
                   DioErrorType
-                      .RESPONSE, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
+                      .response, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
         )));
 
     (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -210,15 +210,15 @@ class HttpManager {
   }
 
   void formatError(DioError e) {
-    if (e.type == DioErrorType.CONNECT_TIMEOUT) {
+    if (e.type == DioErrorType.connectTimeout) {
       showToast('连接超时');
-    } else if (e.type == DioErrorType.SEND_TIMEOUT) {
+    } else if (e.type == DioErrorType.sendTimeout) {
       showToast('请求超时');
-    } else if (e.type == DioErrorType.RECEIVE_TIMEOUT) {
+    } else if (e.type == DioErrorType.receiveTimeout) {
       showToast('响应超时');
-    } else if (e.type == DioErrorType.RESPONSE) {
+    } else if (e.type == DioErrorType.response) {
       showToast('响应异常');
-    } else if (e.type == DioErrorType.CANCEL) {
+    } else if (e.type == DioErrorType.cancel) {
       // showToast('请求取消');
     } else {
       showToast('网络好像出问题了');

@@ -79,7 +79,7 @@ class EhConfigService extends ProfileService {
 
     /// 阅读方向
     viewMode.value =
-        EnumToString.fromString(ViewMode.values, ehConfig?.viewModel) ??
+        EnumToString.fromString(ViewMode.values, ehConfig?.viewModel ?? '') ??
             ViewMode.LeftToRight;
     everFromEunm(viewMode, (String value) => ehConfig.viewModel = value);
 
@@ -108,9 +108,9 @@ class EhConfigService extends ProfileService {
     catFilter.value = ehConfig.catFilter ?? 0;
     everProfile(catFilter, (value) => ehConfig.catFilter = value);
 
-    listMode.value =
-        EnumToString.fromString(ListModeEnum.values, ehConfig?.listMode) ??
-            ListModeEnum.list;
+    listMode.value = EnumToString.fromString(
+            ListModeEnum.values, ehConfig?.listMode ?? '') ??
+        ListModeEnum.list;
     everFromEunm(listMode, (String value) => ehConfig.listMode = value);
 
     maxHistory.value = ehConfig.maxHistory ?? 100;
@@ -120,7 +120,7 @@ class EhConfigService extends ProfileService {
     everProfile(isSearchBarComp, (value) => ehConfig.searchBarComp = value);
 
     favoriteOrder.value = EnumToString.fromString(
-            FavoriteOrder.values, ehConfig?.favoritesOrder) ??
+            FavoriteOrder.values, ehConfig?.favoritesOrder ?? '') ??
         FavoriteOrder.fav;
     everFromEunm(
         favoriteOrder, (String value) => ehConfig.favoritesOrder = value);
@@ -164,7 +164,7 @@ class EhConfigService extends ProfileService {
 
     // orientation
     orientation.value = EnumToString.fromString(
-            ReadOrientation.values, ehConfig?.favoritesOrder) ??
+            ReadOrientation.values, ehConfig?.favoritesOrder ?? '') ??
         ReadOrientation.system;
     everFromEunm(orientation, (String value) => ehConfig.orientation = value);
   }

@@ -44,9 +44,9 @@ class ThemeService extends ProfileService {
   @override
   void onInit() {
     super.onInit();
-    _themeModel.value =
-        EnumToString.fromString(ThemesModeEnum.values, Global.profile.theme) ??
-            ThemesModeEnum.system;
+    _themeModel.value = EnumToString.fromString(
+            ThemesModeEnum.values, Global.profile.theme ?? '') ??
+        ThemesModeEnum.system;
     everFromEunm(_themeModel, (String value) {
       Global.profile.theme = value;
     });

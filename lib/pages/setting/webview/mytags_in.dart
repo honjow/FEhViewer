@@ -11,16 +11,22 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class InWebMyTags extends StatelessWidget {
   final CookieManager _cookieManager = CookieManager.instance();
 
-  @override
-  Widget build(BuildContext context) {
-    InAppWebViewController _controller;
+  Future<void> _setCookie() async {
     final List<io.Cookie> cookies =
-        Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
+        await Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
 
     for (final io.Cookie cookie in cookies) {
       _cookieManager.setCookie(
-          url: Api.getBaseUrl(), name: cookie.name, value: cookie.value);
+          url: Uri.parse(Api.getBaseUrl()),
+          name: cookie.name,
+          value: cookie.value);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    InAppWebViewController _controller;
+
     final CupertinoPageScaffold cpf = CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         padding: const EdgeInsetsDirectional.only(end: 6),
@@ -38,42 +44,38 @@ class InWebMyTags extends StatelessWidget {
                 _controller.reload();
               },
             ),
-            // CupertinoButton(
-            //   padding: const EdgeInsets.all(0),
-            //   child: const Icon(
-            //     FontAwesomeIcons.checkCircle,
-            //     size: 24,
-            //   ),
-            //   onPressed: () async {
-            //     _controller.evaluateJavascript(
-            //         source:
-            //             'document.querySelector("#apply > input[type=submit]").click();');
-            //   },
-            // ),
           ],
         ),
       ),
       child: SafeArea(
         child: InAppWebView(
-          initialUrl: '${Api.getBaseUrl()}/mytags',
+          initialUrlRequest:
+              URLRequest(url: Uri.parse('${Api.getBaseUrl()}/mytags')),
           onWebViewCreated: (InAppWebViewController controller) {
             _controller = controller;
           },
-          onLoadStart: (InAppWebViewController controller, String url) {
+          onLoadStart: (InAppWebViewController controller, Uri url) {
             logger.d('Page started loading: $url');
 
-            if (!url.endsWith('/mytags')) {
+            if (!url.toString().endsWith('/mytags')) {
               logger.d('阻止打开 $url');
               controller.stopLoading();
             }
           },
-          onLoadStop: (InAppWebViewController controller, String url) async {
+          onLoadStop: (InAppWebViewController controller, Uri url) async {
             logger.d('Page Finished loading: $url');
           },
         ),
       ),
     );
 
-    return cpf;
+    return FutureBuilder<void>(
+        future: _setCookie(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const Center(child: CupertinoActivityIndicator());
+          }
+          return cpf;
+        });
   }
 }

@@ -3,7 +3,7 @@ description: ..
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.4+149
+version: 1.1.0+150
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
@@ -17,90 +17,83 @@ dependencies:
     sdk: flutter
 
   intl: ^0.17.0
-#  intl: ^0.16.1
 
   # 图标
-  cupertino_icons: ^1.0.0
-  font_awesome_flutter: ^8.11.0
+  cupertino_icons: ^1.0.2
+  font_awesome_flutter: ^9.0.0-nullsafety
   line_icons: ^1.3.2
 
   # 网络请求
-  dio: ^3.0.10
-  dio_http_cache: ^0.2.11
+  dio: ^4.0.0-beta4
+#  dio_http_cache: ^0.2.11
+  # 临时 空安全版本
+  dio_http_cache:
+    git:
+      url: git://github.com/shinayser/dio-http-cache.git
 
   # cookie
-  cookie_jar: ^1.0.1
-  dio_cookie_manager: ^1.0.0
-  webview_cookie_manager: ^1.0.5
+  cookie_jar: ^3.0.0-beta2
+  dio_cookie_manager: ^2.0.0-beta1
+  webview_cookie_manager: ^2.0.0-nullsafety.0
 
   #shared_preferences插件 持久化
-  shared_preferences: '>=0.5.7+3'
-#  shared_preferences:
-#    git:
-#      url: https://github.com/flutter/plugins.git
-#      path: packages/shared_preferences/shared_preferences
+  shared_preferences: ^2.0.3
 
   # toast
-  oktoast: ^2.3.2
+  oktoast: ^3.0.0
 
   # 下拉刷新
   # flutter_easyrefresh: ^2.1.1
 
   # 数据库
-  sqflite: ^1.3.2+3
+  sqflite: ^2.0.0+1
 
   # html反转义
-  html_unescape: ^1.0.2
+  html_unescape: ^2.0.0-nullsafety.0
 
-  enum_to_string: ^1.0.14
+  enum_to_string: ^2.0.0-nullsafety.1
 
   # webview
-  flutter_webview_plugin: ^0.3.11
-#  webview_flutter:
-#    git:
-#      url: https://github.com/flutter/plugins.git
-#      path: packages/webview_flutter
-  webview_flutter: ^1.0.7
-  flutter_inappwebview: ^4.0.0+4
-#  flutter_inappwebview:
-#    path: /Users/honjow/git/flutter_inappwebview
+#  flutter_webview_plugin: ^0.3.11
+#  webview_flutter: ^2.0.1
+  flutter_inappwebview: ^5.0.5+3
 
-  html: ^0.14.0+4
+  html: ^0.15.0
 
   # 文字链接
-  flutter_linkify: ^4.0.2
-  url_launcher: ^5.7.10
+  flutter_linkify: ^4.1.0
+  url_launcher: ^6.0.2
 
   # 元组
-  tuple: ^1.0.3
+  tuple: ^2.0.0-nullsafety.0
 
   # 状态管理
 #  provider: ^4.3.2+2
 
-# 目前的3.25.x版本存在refresh的bug。github版本已修复 暂时使用GitHub源
-#  get: 3.25.4
+  get: ^3.25.6
   get_storage: ^1.4.0
 
   photo_view: ^0.10.3
 
   # 图片相关
-  cached_network_image: ^2.5.0
-  extended_image: ^2.0.0
+  cached_network_image: ^3.0.0-nullsafety
+#  extended_image: ^2.0.0
+  extended_image:
+    git:
+      url: git://github.com/fluttercandies/extended_image.git
+      ref: dev
 
   liquid_progress_indicator: ^0.3.2
 
-  logger: ^0.9.4
-#  logger_flutter:
-#    git:
-#      url: https://github.com/ewertonrp/logger_flutter.git
+  logger: ^1.0.0-nullsafety.0
 
   # 瀑布流
   waterfall_flow: any
 
-  modal_bottom_sheet: ^1.0.0+1
+  modal_bottom_sheet: ^2.0.0-nullsafety.1
 
   # 生物认证 指纹 面容等
-  local_auth: ^0.6.3+4
+  local_auth: ^1.1.0
 
   # 彩蛋
   flutter_egg: ^1.0.3
@@ -111,16 +104,7 @@ dependencies:
   #device_preview: ^0.5.5
 
   # 分享
-  share: ^0.6.5+4
-#  share:
-#    git:
-#      url: https://github.com/flutter/plugins.git
-#      path: packages/share
-
-#  sensors:
-#    git:
-#      url: https://github.com/flutter/plugins.git
-#      path: packages/sensors
+  share: ^2.0.0
 
   # 权限检查
   permission_handler: ^5.1.0+2
@@ -129,7 +113,7 @@ dependencies:
 #      url: https://github.com/Baseflow/flutter-permission-handler.git
 #      path: permission_handler
 
-  flutter_cache_manager: ^2.1.1
+  flutter_cache_manager: ^3.0.0-nullsafety.1
 
   # 图片保存
   image_gallery_saver: ^1.6.8
@@ -137,9 +121,9 @@ dependencies:
   popup_menu: ^1.0.5
 
   # 滑动删除
-  flutter_slidable: ^0.5.7
+  flutter_slidable: ^0.6.0-nullsafety.0
 
-  scrollable_positioned_list: ^0.1.9
+  scrollable_positioned_list: ^0.2.0-nullsafety.0
 
   reorderables: ^0.3.2
 
@@ -149,7 +133,7 @@ dependencies:
   flutter_vibrate: ^1.0.0
 
   # 文件选择
-  file_picker: ^2.1.5+1
+  file_picker: ^3.0.0-nullsafety.3
 
 #  flutter_screenutil:
 #    git:
@@ -159,7 +143,7 @@ dependencies:
     git:
       url: git://github.com/fluttercandies/like_button.git
 
-  flutter_rating_bar: ^3.2.0+1
+  flutter_rating_bar: ^4.0.0
 
   custom_pop_up_menu: ^1.1.0
 
@@ -172,27 +156,27 @@ dependencies:
   flutter_downloader:
     path: /Users/honjow/git/flutter_downloader_honjow
 
-  floor: ^0.18.0
-  copy_with_extension: ^1.4.0
-  package_info: ^0.4.3+4
+  floor: ^1.0.0-nullsafety.0
+  copy_with_extension: ^2.0.0-nullsafety.1
+  package_info: ^2.0.0
 
-  firebase_analytics: any
-  firebase_crashlytics: any
-  firebase_performance: any
+  firebase_analytics: ^7.1.0
+  firebase_crashlytics: ^1.0.0
+  firebase_performance: ^0.6.0
   dio_firebase_performance: ^0.3.0
   pretty_dio_logger: ^1.1.1
-  dio_retry: ^0.1.9-beta
+#  dio_retry: ^0.1.9-beta
+  dio_retry:
+    path: /Users/honjow/git/dio_retry/dio_retry
   translator: ^0.1.5
 #  flutter_screen_lock: ^1.2.6
-  pattern_lock: ^1.0.3
+  pattern_lock: ^2.0.0-nullsafety.1
   orientation: ^1.2.0
-  vibration: ^1.7.3
+  vibration: ^1.7.4-nullsafety.0
 
 
 
 dev_dependencies:
-#  build_runner: ^1.0.0
-#  json_serializable: ^2.0.0
 #  # flutter packages pub run json_model src=json_files  dist=data # will save in lib/data dir
 #  json_model: ^0.0.2
   json_to_model: #flutter pub run json_to_model   ### json_model太久不更新了 依赖版本太低
@@ -203,12 +187,12 @@ dev_dependencies:
   build_runner: ^1.10.3
 #  build_runner:
 #    path: /Users/honjow/git/build/build_runner
-  json_serializable: ^3.3.0
-  json_annotation: ^3.0.1
+  json_serializable: ^4.0.2
+  json_annotation: ^4.0.0
 #
   intl_translation: ^0.17.10+1
-  floor_generator: ^0.18.0
-  copy_with_extension_gen: ^1.4.0
+  floor_generator: ^1.0.0-nullsafety.0
+  copy_with_extension_gen: ^2.0.0-nullsafety.1
 
   flutter_test:
     sdk: flutter
@@ -224,9 +208,20 @@ dependency_overrides:
   glob: ^2.0.0
   convert: ^3.0.0
   build: ^1.6.3
-  get:
-    git: git://github.com/jonataslaw/getx.git
+  http: ^0.13.0
+  path_provider: ^2.0.1
+  uuid: ^3.0.0
   intl: ^0.17.0
+  json_serializable: ^4.0.2
+  json_annotation: ^4.0.0
+  dio: ^4.0.0-beta4
+  build_config: ^0.4.6
+  expressions: ^0.2.0-nullsafety.1
+  petitparser: ^4.0.0-nullsafety.1
+  firebase_performance: ^0.6.0
+  firebase_core_platform_interface: ^4.0.0
+  plugin_platform_interface: ^2.0.0
+  http_parser: ^4.0.0
 
 flutter_intl:
   enabled: true

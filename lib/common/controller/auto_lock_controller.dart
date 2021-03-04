@@ -21,7 +21,7 @@ class AutoLockController extends GetxController {
   static final AndroidAuthMessages androidStrings = AndroidAuthMessages(
     cancelButton: S.of(Get.context).cancel,
     signInTitle: '指纹认证',
-    fingerprintHint: '触摸指纹传感器',
+    biometricHint: '触摸指纹传感器',
   );
 
   /// 最后离开时间

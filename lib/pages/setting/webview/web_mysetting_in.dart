@@ -12,16 +12,22 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class InWebMySetting extends StatelessWidget {
   final CookieManager _cookieManager = CookieManager.instance();
 
-  @override
-  Widget build(BuildContext context) {
-    InAppWebViewController _controller;
+  Future<void> _setCookie() async {
     final List<io.Cookie> cookies =
-        Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
+        await Global.cookieJar.loadForRequest(Uri.parse(Api.getBaseUrl()));
 
     for (final io.Cookie cookie in cookies) {
       _cookieManager.setCookie(
-          url: Api.getBaseUrl(), name: cookie.name, value: cookie.value);
+          url: Uri.parse(Api.getBaseUrl()),
+          name: cookie.name,
+          value: cookie.value);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    InAppWebViewController _controller;
+
     final CupertinoPageScaffold cpf = CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         padding: const EdgeInsetsDirectional.only(end: 6),
@@ -58,19 +64,21 @@ class InWebMySetting extends StatelessWidget {
       ),
       child: SafeArea(
         child: InAppWebView(
-          initialUrl: '${Api.getBaseUrl()}/uconfig.php',
+          // initialUrl: '${Api.getBaseUrl()}/uconfig.php',
+          initialUrlRequest:
+              URLRequest(url: Uri.parse('${Api.getBaseUrl()}/uconfig.php')),
           onWebViewCreated: (InAppWebViewController controller) {
             _controller = controller;
           },
-          onLoadStart: (InAppWebViewController controller, String url) {
+          onLoadStart: (InAppWebViewController controller, Uri url) {
             logger.d('Page started loading: $url');
 
-            if (!url.endsWith('/uconfig.php')) {
+            if (!url.toString().endsWith('/uconfig.php')) {
               logger.d('阻止打开 $url');
               controller.stopLoading();
             }
           },
-          onLoadStop: (InAppWebViewController controller, String url) async {
+          onLoadStop: (InAppWebViewController controller, Uri url) async {
             logger.d('Page Finished loading: $url');
             // 写入cookie到dio
             _cookieManager.getCookies(url: url).then((value) {
@@ -91,6 +99,13 @@ class InWebMySetting extends StatelessWidget {
       ),
     );
 
-    return cpf;
+    return FutureBuilder<void>(
+        future: _setCookie(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const Center(child: CupertinoActivityIndicator());
+          }
+          return cpf;
+        });
   }
 }

@@ -290,7 +290,7 @@ class GalleryPageController extends GetxController
       _itemController?.update([gid]);
       return galleryItem;
     } on DioError catch (e) {
-      if (e.type == DioErrorType.RESPONSE && e.response.statusCode == 404) {
+      if (e.type == DioErrorType.response && e.response.statusCode == 404) {
         showToast('画廊已被删除');
         rethrow;
       }

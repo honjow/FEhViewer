@@ -207,7 +207,8 @@ Future<Dio> _getIsolateDio({bool isSiteEx, String appSupportPath}) async {
   _dio = Dio(_options);
 
   // Cookie管理
-  final PersistCookieJar cookieJar = PersistCookieJar(dir: appSupportPath);
+  final PersistCookieJar cookieJar =
+      PersistCookieJar(storage: FileStorage(appSupportPath));
   final CookieManager _cookieManager = CookieManager(cookieJar);
   _dio.interceptors.add(_cookieManager);
 
@@ -236,11 +237,13 @@ Future<List<GalleryPreview>> _isoFetchGalleryPreview(
   bool refresh = false,
   CancelToken cancelToken,
 }) async {
-  final PersistCookieJar cookieJar = PersistCookieJar(dir: appSupportPath);
+  final PersistCookieJar cookieJar =
+      PersistCookieJar(storage: FileStorage(appSupportPath));
   final String _baseUrl = EHConst.getBaseSite(isSiteEx ?? false);
   final String url = inUrl + '?p=$page';
 
-  final List<Cookie> cookies = cookieJar.loadForRequest(Uri.parse(_baseUrl));
+  final List<Cookie> cookies =
+      await cookieJar.loadForRequest(Uri.parse(_baseUrl));
   cookies.add(Cookie('nw', '1'));
   cookieJar.saveFromResponse(Uri.parse(_baseUrl), cookies);
 

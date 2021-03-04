@@ -6,7 +6,7 @@ import '../index.dart';
 
 extension ExtGC on GalleryCache {
   ColumnMode get columnMode =>
-      EnumToString.fromString(ColumnMode.values, columnModeVal);
+      EnumToString.fromString(ColumnMode.values, columnModeVal ?? '');
   set columnMode(ColumnMode val) =>
       columnModeVal = EnumToString.convertToString(val);
 }
@@ -55,7 +55,7 @@ extension ExtComment on GalleryComment {
 
 extension ExtCommentSpan on GalleryCommentSpan {
   CommentSpanType get sType =>
-      EnumToString.fromString(CommentSpanType.values, type);
+      EnumToString.fromString(CommentSpanType.values, type ?? '');
   set sType(CommentSpanType val) => type = EnumToString.convertToString(val);
 }
 

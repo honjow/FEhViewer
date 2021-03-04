@@ -5,9 +5,7 @@ import 'package:fehviewer/common/service/ehconfig_service.dart';
 import 'package:fehviewer/common/service/theme_service.dart';
 import 'package:fehviewer/const/const.dart';
 import 'package:fehviewer/generated/l10n.dart';
-import 'package:fehviewer/pages/setting/webview/mytags_ap.dart';
 import 'package:fehviewer/pages/setting/webview/mytags_in.dart';
-import 'package:fehviewer/pages/setting/webview/web_mysetting_ap.dart';
 import 'package:fehviewer/pages/setting/webview/web_mysetting_in.dart';
 import 'package:fehviewer/store/tag_database.dart';
 import 'package:fehviewer/utils/logger.dart';
@@ -124,7 +122,8 @@ class ListViewEhSetting extends StatelessWidget {
           selector: S.of(context).setting_on_website,
           onTap: () {
             if (GetPlatform.isAndroid) {
-              Get.to(() => WebMySettingAP());
+              // Get.to(() => WebMySettingAP());
+              Get.to(() => InWebMySetting());
             } else if (GetPlatform.isIOS) {
               Get.to(() => InWebMySetting());
             } else {
@@ -139,7 +138,8 @@ class ListViewEhSetting extends StatelessWidget {
           selector: S.of(context).mytags_on_website,
           onTap: () {
             if (GetPlatform.isAndroid) {
-              Get.to(() => WebMyTagsAP());
+              // Get.to(() => WebMyTagsAP());
+              Get.to(() => InWebMyTags());
             } else if (GetPlatform.isIOS) {
               Get.to(() => InWebMyTags());
             } else {

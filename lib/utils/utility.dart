@@ -198,7 +198,7 @@ class CookieUtil {
   static Future<void> resetExCookieFromEh() async {
     final PersistCookieJar cookieJar = await Api.cookieJar;
     final List<Cookie> cookiesEh =
-        cookieJar.loadForRequest(Uri.parse(EHConst.EH_BASE_URL));
+        await cookieJar.loadForRequest(Uri.parse(EHConst.EH_BASE_URL));
     final Cookie _memberId = Cookie.fromSetCookieValue(cookiesEh
         .firstWhere((Cookie cookie) => cookie.name == 'ipb_member_id')
         .toString()
@@ -218,7 +218,7 @@ class CookieUtil {
   static Future<void> fixEhCookie() async {
     final PersistCookieJar cookieJar = await Api.cookieJar;
     final List<Cookie> cookiesEh =
-        cookieJar.loadForRequest(Uri.parse(EHConst.EH_BASE_URL));
+        await cookieJar.loadForRequest(Uri.parse(EHConst.EH_BASE_URL));
     final Cookie _memberId = cookiesEh
         .firstWhere((Cookie cookie) => cookie.name == 'ipb_member_id')
           ..domain = '.e-hentai.org';

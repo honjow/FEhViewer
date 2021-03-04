@@ -16,8 +16,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-#  intl: ^0.17.0-nullsafety.2
-  intl: ^0.16.1
+  intl: ^0.17.0
+#  intl: ^0.16.1
 
   # 图标
   cupertino_icons: ^1.0.0
@@ -77,14 +77,15 @@ dependencies:
   # 状态管理
 #  provider: ^4.3.2+2
 
-  get: 3.25.6
+# 目前的3.25.x版本存在refresh的bug。github版本已修复 暂时使用GitHub源
+#  get: 3.25.4
   get_storage: ^1.4.0
 
   photo_view: ^0.10.3
 
   # 图片相关
   cached_network_image: ^2.5.0
-  extended_image: ^1.5.0
+  extended_image: ^2.0.0
 
   liquid_progress_indicator: ^0.3.2
 
@@ -213,11 +214,19 @@ dev_dependencies:
     sdk: flutter
 
 dependency_overrides:
-  build_runner: ^1.11.1
-  analyzer: ^0.41.2
-  build: ^1.6.2
-#  get:
-#    git: git://github.com/jonataslaw/getx.git
+  build_runner: ^1.11.5
+  analyzer: ^1.1.0
+  args: ^2.0.0
+  crypto: ^3.0.0
+  yaml: ^3.0.0
+  watcher: ^1.0.0
+  package_config: ^2.0.0
+  glob: ^2.0.0
+  convert: ^3.0.0
+  build: ^1.6.3
+  get:
+    git: git://github.com/jonataslaw/getx.git
+  intl: ^0.17.0
 
 flutter_intl:
   enabled: true

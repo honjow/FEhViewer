@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cookie_jar/cookie_jar.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:dns_client/dns_client.dart';
 import 'package:enum_to_string/enum_to_string.dart';
@@ -84,7 +84,8 @@ class Api {
         cache: cache, connectTimeout: connectTimeout);
   }
 
-  static Options getCacheOptions({bool forceRefresh = false, Options options}) {
+  static dio.Options getCacheOptions(
+      {bool forceRefresh = false, dio.Options options}) {
     return buildCacheOptions(
       const Duration(days: 5),
       maxStale: const Duration(days: 7),
@@ -110,14 +111,14 @@ class Api {
     int cats,
     bool refresh = false,
     SearchType searchType = SearchType.normal,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
     String favcat,
   }) async {
     // logger.d('getPopular');
     const String url = '/popular';
 
     await CustomHttpsProxy.instance.init();
-    final Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
+    final dio.Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
 
     final String response =
         await getHttpManager().get(url, options: _cacheOptions);
@@ -151,12 +152,12 @@ class Api {
     int cats,
     bool refresh = false,
     SearchType searchType = SearchType.normal,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
     String favcat,
   }) async {
     // logger.d('getWatched');
     const String _url = '/watched';
-    final Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
+    final dio.Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
 
     final Map<String, dynamic> params = <String, dynamic>{
       'page': page,
@@ -203,7 +204,7 @@ class Api {
     int cats,
     bool refresh = false,
     SearchType searchType = SearchType.normal,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
     String favcat,
   }) async {
     final EhConfigService _ehConfigService = Get.find();
@@ -236,7 +237,7 @@ class Api {
       params.addAll(_searchController.advanceSearchMap);
     }
 
-    final Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
+    final dio.Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
 
     // logger.v(url);
 
@@ -269,7 +270,7 @@ class Api {
     int cats,
     bool refresh = false,
     SearchType searchType = SearchType.normal,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
   }) async {
     final AdvanceSearchController _searchController = Get.find();
 
@@ -286,7 +287,7 @@ class Api {
       params.addAll(_searchController.favSearchMap);
     }
 
-    final Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
+    final dio.Options _cacheOptions = getCacheOptions(forceRefresh: refresh);
 
     // logger.d('${params}');
     await CustomHttpsProxy.instance.init();
@@ -341,7 +342,7 @@ class Api {
     String inUrl,
     GalleryItem inGalleryItem,
     bool refresh = false,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
   }) async {
     /// 使用 inline_set 和 nw 参数会重定向，导致请求时间过长 默认不使用
     /// final String url = inUrl + '?hc=1&inline_set=ts_l&nw=always';
@@ -386,7 +387,7 @@ class Api {
     String inUrl, {
     int page,
     bool refresh = false,
-    CancelToken cancelToken,
+    dio.CancelToken cancelToken,
   }) async {
     //?inline_set=ts_m 小图,40一页
     //?inline_set=ts_l 大图,20一页
@@ -485,10 +486,11 @@ class Api {
     String url,
     String resolution,
   ) async {
-    final Response response = await getHttpManager(cache: false).postForm(url,
-        data: FormData.fromMap({
-          'hathdl_xres': resolution.trim(),
-        }));
+    final dio.Response response =
+        await getHttpManager(cache: false).postForm(url,
+            data: dio.FormData.fromMap({
+              'hathdl_xres': resolution.trim(),
+            }));
     return parseArchiverDownload(response.data);
   }
 
@@ -497,11 +499,12 @@ class Api {
     String dltype,
     String dlcheck,
   }) async {
-    final Response response = await getHttpManager(cache: false).postForm(url,
-        data: FormData.fromMap({
-          if (dltype != null) 'dltype': dltype.trim(),
-          if (dlcheck != null) 'dlcheck': dlcheck.trim(),
-        }));
+    final dio.Response response =
+        await getHttpManager(cache: false).postForm(url,
+            data: dio.FormData.fromMap({
+              if (dltype != null) 'dltype': dltype.trim(),
+              if (dlcheck != null) 'dlcheck': dlcheck.trim(),
+            }));
     // logger.d('${response.data} ');
     final String _href = RegExp(r'document.location = "(.+)"')
         .firstMatch(response.data)
@@ -703,13 +706,13 @@ class Api {
     }
 
     try {
-      final Response response = await getHttpManager(cache: false).postForm(
+      final dio.Response response = await getHttpManager(cache: false).postForm(
         url,
-        data: FormData.fromMap({
+        data: dio.FormData.fromMap({
           isEdit ? 'commenttext_edit' : 'commenttext_new': comment,
           if (isEdit) 'edit_comment': int.parse(commentId),
         }),
-        options: Options(
+        options: dio.Options(
             followRedirects: false,
             validateStatus: (int status) {
               return status < 500;
@@ -982,7 +985,7 @@ class Api {
 
     final String cookie = Global.profile?.user?.cookie ?? '';
 
-    final Options options = Options(headers: {
+    final dio.Options options = dio.Options(headers: {
       'Cookie': cookie,
     });
 
@@ -1006,7 +1009,7 @@ class Api {
 
     // logger.d('$reqJsonStr');
 
-    final Options _cacheOptinos = buildCacheOptions(
+    final dio.Options _cacheOptinos = buildCacheOptions(
       const Duration(days: 1),
       maxStale: const Duration(minutes: 1),
       options: options,
@@ -1014,7 +1017,7 @@ class Api {
     );
 
     await CustomHttpsProxy.instance.init();
-    final Response<dynamic> response = await Api.getHttpManager().postForm(
+    final dio.Response<dynamic> response = await Api.getHttpManager().postForm(
       url,
       options: _cacheOptinos,
       data: reqJsonStr,
@@ -1054,7 +1057,7 @@ class Api {
 
     // logger.d('$reqJsonStr');
 
-    final Options _cacheOptinos = buildCacheOptions(
+    final dio.Options _cacheOptinos = buildCacheOptions(
       const Duration(days: 1),
       maxStale: const Duration(minutes: 1),
     );
@@ -1068,7 +1071,7 @@ class Api {
       url,
       options: getCacheOptions(
         forceRefresh: refresh,
-        options: Options(receiveTimeout: 8000),
+        options: dio.Options(receiveTimeout: 8000),
       ),
       params: _params,
     );

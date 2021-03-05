@@ -6,7 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:dns_client/dns_client.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fehviewer/common/controller/advance_search_controller.dart';
@@ -65,16 +64,6 @@ class Api {
           PersistCookieJar(storage: FileStorage(Global.appSupportPath));
     }
     return _cookieJar;
-  }
-
-  static Future<String> getIpByDoH(String url) async {
-    final DnsOverHttps dns = DnsOverHttps.cloudflare();
-    final List<InternetAddress> response = await dns.lookup(url);
-    if (response.isNotEmpty) {
-      return response.first.address;
-    } else {
-      return url;
-    }
   }
 
   static HttpManager getHttpManager(

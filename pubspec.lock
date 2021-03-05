@@ -36,6 +36,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.5.0"
+  basic_utils:
+    dependency: "direct main"
+    description:
+      name: basic_utils
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.0-nullsafety.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -255,13 +262,6 @@ packages:
       relative: false
     source: path
     version: "0.1.10-beta"
-  dns_client:
-    dependency: "direct main"
-    description:
-      name: dns_client
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.1.0+2"
   enum_to_string:
     dependency: "direct main"
     description:
@@ -326,7 +326,7 @@ packages:
       name: file_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.0-nullsafety.3"
+    version: "3.0.0"
   firebase:
     dependency: transitive
     description:
@@ -522,20 +522,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "9.0.0-nullsafety"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.12.0"
   get:
     dependency: "direct main"
     description:
       name: get
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.25.6"
+    version: "3.26.0"
   get_storage:
     dependency: "direct main"
     description:
@@ -709,12 +702,12 @@ packages:
     source: hosted
     version: "1.0.0-nullsafety.0"
   logging:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: logging
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.11.4"
+    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
@@ -876,6 +869,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.0-nullsafety.2"
   pool:
     dependency: transitive
     description:

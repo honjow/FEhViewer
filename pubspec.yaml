@@ -127,7 +127,8 @@ dependencies:
 
   reorderables: ^0.3.2
 
-  dns_client: ^0.1.0+2
+#  dns_client: ^0.1.0+2
+  basic_utils: ^3.0.0-nullsafety.0
 
   # 震动
   flutter_vibrate: ^1.0.0
@@ -222,6 +223,7 @@ dependency_overrides:
   firebase_core_platform_interface: ^4.0.0
   plugin_platform_interface: ^2.0.0
   http_parser: ^4.0.0
+  logging: ^1.0.0
 
 flutter_intl:
   enabled: true

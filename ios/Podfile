@@ -36,12 +36,12 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    # flutter_additional_ios_build_settings(target)
+    flutter_additional_ios_build_settings(target)
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
       config.build_settings['SWIFT_VERSION'] = '5.0'  # required by simple_permission
       config.build_settings['ENABLE_BITCODE'] = 'NO'
-    # You can remove unused permissions here
+      # You can remove unused permissions here
       # for more infomation: https://github.com/BaseflowIT/flutter-permission-handler/blob/develop/permission_handler/ios/Classes/PermissionHandlerEnums.h
       # e.g. when you don't need camera permission, just add 'PERMISSION_CAMERA=0'
       config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [

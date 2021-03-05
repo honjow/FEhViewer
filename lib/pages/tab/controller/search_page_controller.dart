@@ -108,6 +108,8 @@ class SearchPageController extends TabViewController {
   /// 执行搜索
   Future<void> _startSearch() async {
     final String _searchText = searchTextController.text.trim();
+    logger.d('_searchText $_searchText');
+
     if (_searchText.isNotEmpty) {
       _search = _searchText;
 

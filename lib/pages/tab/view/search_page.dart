@@ -35,6 +35,68 @@ enum SearchMenuEnum {
 class GallerySearchPage extends StatelessWidget {
   SearchPageController get controller => Get.find(tag: searchPageCtrlDepth);
 
+  Widget get searchTextFieldNew => Obx(() => CupertinoSearchTextField(
+        padding: const EdgeInsetsDirectional.fromSTEB(3, 6, 5, 6),
+        style: const TextStyle(height: 1.25),
+        placeholder: controller.placeholderText,
+        placeholderStyle: const TextStyle(
+          fontWeight: FontWeight.w400,
+          color: CupertinoColors.placeholderText,
+          height: 1.25,
+        ),
+        controller: controller.searchTextController,
+        suffixIcon: const Icon(LineIcons.timesCircle),
+        onSubmitted: (_) => controller.onEditingComplete(),
+        focusNode: controller.focusNode,
+      ));
+
+  Widget get searchTextField => Obx(() => CupertinoTextField(
+        style: const TextStyle(height: 1.25),
+        decoration: BoxDecoration(
+          color: ehTheme.textFieldBackgroundColor,
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+        ),
+        placeholder: controller.placeholderText,
+        placeholderStyle: const TextStyle(
+          fontWeight: FontWeight.w400,
+          color: CupertinoColors.placeholderText,
+          height: 1.25,
+        ),
+        // clearButtonMode: OverlayVisibilityMode.editing,
+        prefix: CupertinoButton(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          minSize: 0,
+          child: const Icon(
+            LineIcons.search,
+            color: CupertinoColors.systemGrey,
+          ),
+          onPressed: () {},
+        ),
+        suffix: GetBuilder<SearchPageController>(
+          id: GetIds.SEARCH_CLEAR_BTN,
+          tag: searchPageCtrlDepth,
+          builder: (SearchPageController controller) {
+            return controller.showClearButton
+                ? GestureDetector(
+                    onTap: controller.clear,
+                    child: Icon(
+                      LineIcons.timesCircle,
+                      size: 18.0,
+                      color: CupertinoDynamicColor.resolve(
+                          _kClearButtonColor, Get.context),
+                    ).paddingSymmetric(horizontal: 6),
+                  )
+                : const SizedBox();
+          },
+        ),
+        padding: const EdgeInsetsDirectional.fromSTEB(0, 6, 5, 6),
+        controller: controller.searchTextController,
+        autofocus: controller.autofocus,
+        textInputAction: TextInputAction.search,
+        onEditingComplete: controller.onEditingComplete,
+        focusNode: controller.focusNode,
+      ));
+
   @override
   Widget build(BuildContext context) {
     final Widget cfp = CupertinoPageScaffold(
@@ -43,47 +105,10 @@ class GallerySearchPage extends StatelessWidget {
         padding: const EdgeInsetsDirectional.only(start: 0),
 //        border: null,
 
-        middle: Obx(() => CupertinoTextField(
-              style: const TextStyle(height: 1.25),
-              decoration: BoxDecoration(
-                color: ehTheme.textFieldBackgroundColor,
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-              ),
-              placeholder: controller.placeholderText,
-              placeholderStyle: const TextStyle(
-                fontWeight: FontWeight.w400,
-                color: CupertinoColors.placeholderText,
-                height: 1.25,
-              ),
-              // clearButtonMode: OverlayVisibilityMode.editing,
-              suffix: GetBuilder<SearchPageController>(
-                id: GetIds.SEARCH_CLEAR_BTN,
-                tag: searchPageCtrlDepth,
-                builder: (SearchPageController controller) {
-                  return controller.showClearButton
-                      ? GestureDetector(
-                          onTap: controller.clear,
-                          child: Icon(
-                            LineIcons.timesCircle,
-                            size: 18.0,
-                            color: CupertinoDynamicColor.resolve(
-                                _kClearButtonColor, context),
-                          ).paddingSymmetric(horizontal: 6),
-                        )
-                      : const SizedBox();
-                },
-              ),
-              padding: const EdgeInsets.fromLTRB(12, 6, 6, 6),
-              controller: controller.searchTextController,
-              autofocus: controller.autofocus,
-              textInputAction: TextInputAction.search,
-              onEditingComplete: controller.onEditingComplete,
-              focusNode: controller.focusNode,
-            )),
+        middle: searchTextFieldNew,
+        // middle: searchTextField,
         transitionBetweenRoutes: false,
-        leading: Container(
-          width: 0,
-        ),
+        leading: const SizedBox.shrink(),
         trailing: _buildTrailing(context),
       ),
       child: GestureDetector(

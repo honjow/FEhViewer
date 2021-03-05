@@ -15,13 +15,7 @@ class GalleryFavParser {
     final String url = '/gallerypopups.php?gid=$gid&t=$token&act=addfav';
     final String cookie = Global.profile?.user?.cookie ?? '';
 
-    // final Options _cacheOptions =
-    //     Api.getCacheOptions(forceRefresh: true).merge(headers: {
-    //   'Cookie': cookie,
-    // });
-
-    final Options _cacheOptions = Api.getCacheOptions(forceRefresh: true)
-      ..headers['Cookie'] = cookie;
+    final Options _cacheOptions = Api.getCacheOptions(forceRefresh: true);
 
     final FormData formData =
         FormData.fromMap({'favcat': favcat, 'update': '1'});
@@ -44,17 +38,7 @@ class GalleryFavParser {
     final String url = '/gallerypopups.php?gid=$gid&t=$token&act=addfav';
     final String cookie = Global.profile?.user?.cookie ?? '';
 
-    final Options options = Options(headers: {
-      'Cookie': cookie,
-    });
-
-    // final Options _cacheOptions =
-    //     Api.getCacheOptions(forceRefresh: true).merge(headers: {
-    //   'Cookie': cookie,
-    // });
-
-    final Options _cacheOptions = Api.getCacheOptions(forceRefresh: true)
-      ..headers['Cookie'] = cookie;
+    final Options _cacheOptions = Api.getCacheOptions(forceRefresh: true);
 
     final String response = await httpManager.get(
       url,

@@ -2,6 +2,7 @@ import 'package:fehviewer/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../controller/splash_controller.dart';
 
@@ -18,19 +19,18 @@ class SplashPage extends GetView<SplashController> {
         : Container(
             child: Center(
               child: Column(
-                // center the children
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Icon(
-                    Icons.local_cafe,
+                    LineIcons.cat,
                     // FontAwesomeIcons.heading,
                     size: 150.0,
                     color: Colors.grey,
                   ),
-                  Text(
-                    S.of(context).welcome_text,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
+                  // Text(
+                  //   S.of(context).welcome_text,
+                  //   style: const TextStyle(color: Colors.grey),
+                  // ),
                   Text(
                     S.of(context).app_title,
                     style: const TextStyle(color: Colors.grey),

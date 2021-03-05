@@ -540,14 +540,12 @@ packages:
     source: hosted
     version: "0.12.0"
   get:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "47f0ff447eb8cb5d70f9c8ad8bdeb38c8cb8e853"
-      url: "git://github.com/jonataslaw/getx.git"
-    source: git
-    version: "3.25.4"
+      name: get
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.25.6"
   get_storage:
     dependency: "direct main"
     description:

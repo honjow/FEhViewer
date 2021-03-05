@@ -60,9 +60,6 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA04988D254FF9E3008DE488 /* fehviewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fehviewer.entitlements; sourceTree = "<group>"; };
-		BA0498C12553F1EA008DE488 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		BA0498C42553F1EA008DE488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		BA0498C62553F1EA008DE488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1D4D5225B3FC6E00264936 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		BA373B2825D2A11600C042FA /* SecurityBlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityBlurEffect.swift; sourceTree = "<group>"; };
 		BA91606E25C6CC5F001EA128 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -109,7 +106,6 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				BA0498C02553F1EA008DE488 /* EHShareExtension */,
 				97C146EF1CF9000F007C117D /* Products */,
 				BD2B51B0799E31FC8C88C126 /* Pods */,
 				8E17D831CCF214C421795E99 /* Frameworks */,
@@ -141,16 +137,6 @@
 				BA373B2825D2A11600C042FA /* SecurityBlurEffect.swift */,
 			);
 			path = Runner;
-			sourceTree = "<group>";
-		};
-		BA0498C02553F1EA008DE488 /* EHShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				BA0498C12553F1EA008DE488 /* ShareViewController.swift */,
-				BA0498C32553F1EA008DE488 /* MainInterface.storyboard */,
-				BA0498C62553F1EA008DE488 /* Info.plist */,
-			);
-			path = EHShareExtension;
 			sourceTree = "<group>";
 		};
 		BD2B51B0799E31FC8C88C126 /* Pods */ = {
@@ -342,14 +328,6 @@
 				BADC7A7C24A919C100AFDF67 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		BA0498C32553F1EA008DE488 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA0498C42553F1EA008DE488 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

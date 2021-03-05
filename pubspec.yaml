@@ -77,8 +77,7 @@ dependencies:
   # 状态管理
 #  provider: ^4.3.2+2
 
-# 目前的3.25.x版本存在refresh的bug。github版本已修复 暂时使用GitHub源
-#  get: 3.25.4
+  get: 3.25.6
   get_storage: ^1.4.0
 
   photo_view: ^0.10.3
@@ -217,8 +216,8 @@ dependency_overrides:
   build_runner: ^1.11.1
   analyzer: ^0.41.2
   build: ^1.6.2
-  get:
-    git: git://github.com/jonataslaw/getx.git
+#  get:
+#    git: git://github.com/jonataslaw/getx.git
 
 flutter_intl:
   enabled: true

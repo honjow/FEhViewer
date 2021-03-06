@@ -1,6 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:fehviewer/common/controller/user_controller.dart';
-import 'package:fehviewer/common/global.dart';
 import 'package:fehviewer/common/service/ehconfig_service.dart';
 import 'package:fehviewer/common/service/theme_service.dart';
 import 'package:fehviewer/const/const.dart';
@@ -17,14 +16,6 @@ import 'package:get/get.dart';
 import 'setting_base.dart';
 
 class EhSettingPage extends StatelessWidget {
-  Future<bool> _getDelayed() async {
-    final int _delayed = (Global.isFirstReOpenEhSetting ?? true) ? 0 : 0;
-    // logger.v('$_delayed');
-    await Future<void>.delayed(Duration(milliseconds: _delayed));
-    Global.isFirstReOpenEhSetting = false;
-    return Future<bool>.value(true);
-  }
-
   @override
   Widget build(BuildContext context) {
     final CupertinoPageScaffold cps = CupertinoPageScaffold(
@@ -35,21 +26,7 @@ class EhSettingPage extends StatelessWidget {
           middle: Text(S.of(context).eh),
         ),
         child: SafeArea(
-          child: FutureBuilder<bool>(
-              future: _getDelayed(),
-              builder: (_, AsyncSnapshot<bool> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return ListViewEhSetting();
-                  // return Container();
-                } else {
-                  return Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(top: 50, bottom: 100),
-                      child: const CupertinoActivityIndicator(
-                        radius: 14,
-                      ));
-                }
-              }),
+          child: ListViewEhSetting(),
         ));
 
     return cps;

@@ -8,8 +8,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart' hide WebView;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class InWebMyTags extends StatelessWidget {
+class InWebMyTags extends StatefulWidget {
+  @override
+  _InWebMyTagsState createState() => _InWebMyTagsState();
+}
+
+class _InWebMyTagsState extends State<InWebMyTags> {
   final CookieManager _cookieManager = CookieManager.instance();
+  Future<void> _future;
 
   Future<void> _setCookie() async {
     final List<io.Cookie> cookies =
@@ -21,6 +27,12 @@ class InWebMyTags extends StatelessWidget {
           name: cookie.name,
           value: cookie.value);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _future = _setCookie();
   }
 
   @override
@@ -70,7 +82,7 @@ class InWebMyTags extends StatelessWidget {
     );
 
     return FutureBuilder<void>(
-        future: _setCookie(),
+        future: _future,
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CupertinoActivityIndicator());

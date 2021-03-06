@@ -8,9 +8,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart' hide WebView;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-/// iOS使用
-class InWebMySetting extends StatelessWidget {
+class InWebMySetting extends StatefulWidget {
+  @override
+  _InWebMySettingState createState() => _InWebMySettingState();
+}
+
+class _InWebMySettingState extends State<InWebMySetting> {
   final CookieManager _cookieManager = CookieManager.instance();
+  Future<void> _future;
 
   Future<void> _setCookie() async {
     final List<io.Cookie> cookies =
@@ -22,6 +27,12 @@ class InWebMySetting extends StatelessWidget {
           name: cookie.name,
           value: cookie.value);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _future = _setCookie();
   }
 
   @override
@@ -42,7 +53,7 @@ class InWebMySetting extends StatelessWidget {
                 size: 20,
               ),
               onPressed: () async {
-                _controller.reload();
+                _controller?.reload();
               },
             ),
             CupertinoButton(
@@ -53,7 +64,7 @@ class InWebMySetting extends StatelessWidget {
               ),
               onPressed: () async {
                 // 保存配置
-                _controller.evaluateJavascript(
+                _controller?.evaluateJavascript(
                     source:
                         'document.querySelector("#apply > input[type=submit]").click();');
                 // 写入cookie到dio
@@ -100,7 +111,7 @@ class InWebMySetting extends StatelessWidget {
     );
 
     return FutureBuilder<void>(
-        future: _setCookie(),
+        future: _future,
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CupertinoActivityIndicator());

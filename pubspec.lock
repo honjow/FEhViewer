@@ -231,7 +231,7 @@ packages:
       name: dio
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.0-beta4"
+    version: "4.0.0-beta5"
   dio_cookie_manager:
     dependency: "direct main"
     description:
@@ -275,23 +275,21 @@ packages:
       name: expressions
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.0-nullsafety.1"
+    version: "0.2.0"
   extended_image:
     dependency: "direct main"
     description:
-      path: "."
-      ref: dev
-      resolved-ref: "1dd54dfaf2e80717214e6325052e912ff8e6276b"
-      url: "git://github.com/fluttercandies/extended_image.git"
-    source: git
-    version: "1.6.0-dev"
+      name: extended_image
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.0"
   extended_image_library:
     dependency: transitive
     description:
       name: extended_image_library
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.1"
+    version: "2.0.1"
   extended_list_library:
     dependency: transitive
     description:
@@ -464,7 +462,7 @@ packages:
       name: flutter_inappwebview
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.5+3"
+    version: "5.1.0"
   flutter_linkify:
     dependency: "direct main"
     description:
@@ -577,7 +575,7 @@ packages:
       name: http_client_helper
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.1"
+    version: "2.0.1"
   http_multi_server:
     dependency: transitive
     description:
@@ -931,7 +929,7 @@ packages:
       name: receive_sharing_intent
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.4.3"
+    version: "1.4.4"
   reorderables:
     dependency: "direct main"
     description:

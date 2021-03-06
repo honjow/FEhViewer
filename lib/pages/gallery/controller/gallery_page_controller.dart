@@ -122,7 +122,7 @@ class GalleryPageController extends GetxController
   void onInit() {
     super.onInit();
 
-    logger.d('GalleryPageController $pageCtrlDepth onInit');
+    // logger.d('GalleryPageController $pageCtrlDepth onInit');
 
     scrollController.addListener(_scrollControllerLister);
     hideNavigationBtn = true;
@@ -136,7 +136,7 @@ class GalleryPageController extends GetxController
 
     _loadData();
 
-    logger.d('GalleryPageController $pageCtrlDepth onInit end');
+    // logger.d('GalleryPageController $pageCtrlDepth onInit end');
   }
 
   @override
@@ -303,12 +303,11 @@ class GalleryPageController extends GetxController
   }
 
   Future<void> _loadData({bool refresh = false, bool showError = true}) async {
-    logger.d('_firstLoadData');
+    // logger.d('_firstLoadData');
 
     try {
       final GalleryItem _fetchItem = await _fetchData(refresh: refresh);
       change(_fetchItem, status: RxStatus.success());
-      logger.d('change end');
       time.showTime('change end');
 
       _enableRead.value = true;
@@ -519,16 +518,6 @@ class GalleryPageController extends GetxController
     bool refresh,
     bool changeSource = false,
   }) async {
-    // 数据获取处理
-    // try {
-    //   await _lazyGetImageHref(
-    //     cancelToken: cancelToken,
-    //     index: index,
-    //   );
-    // } catch (e, stack) {
-    //   logger.e('$e \n $stack');
-    // }
-
     try {
       /// 当前缩略图对象
       final GalleryPreview _curPreview = galleryItem.previewMap[itemSer];
@@ -546,6 +535,7 @@ class GalleryPageController extends GetxController
             changeSource ? galleryItem.previewMap[itemSer].sourceId : '';
 
         try {
+          logger.v('ftchImageInfo ${galleryItem.previewMap[itemSer].href}');
           final GalleryPreview _preview = await Api.ftchImageInfo(
             galleryItem.previewMap[itemSer].href,
             ser: itemSer,

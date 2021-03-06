@@ -240,7 +240,7 @@ class ViewController extends GetxController {
     //     'onPanDown ${details.globalPosition}  $_centRect');
     if ((_dx < _centRect.left || _dx > _centRect.right) &&
         (_dy < _centRect.top || _dy > _centRect.bottom)) {
-      logger.d('onPanDown hide bar');
+      // logger.d('onPanDown hide bar');
       vState.showBar = false;
     }
   }

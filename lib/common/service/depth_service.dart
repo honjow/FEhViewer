@@ -1,4 +1,3 @@
-import 'package:fehviewer/utils/logger.dart';
 import 'package:get/get.dart';
 
 String get pageCtrlDepth => Get.find<DepthService>().pageCtrlDepth.toString();
@@ -15,13 +14,13 @@ class DepthService extends GetxService {
   // 路由入栈时 深度+1
   void pushPageCtrl() {
     pageCtrlDepth++;
-    logger.d('pushPageCtrl to $pageCtrlDepth');
+    // logger.d('pushPageCtrl to $pageCtrlDepth');
   }
 
   // 出栈 深度-1 放在onClose事件中
   void popPageCtrl() {
     pageCtrlDepth--;
-    logger.d('popPageCtrl to $pageCtrlDepth');
+    // logger.d('popPageCtrl to $pageCtrlDepth');
   }
 
   /// [searchPageCtrlDepth] 搜索页深度

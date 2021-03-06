@@ -424,7 +424,7 @@ class ReadButton extends StatelessWidget {
     final GalleryCache _galleryCache =
         galleryCacheController.getGalleryCache(_pageController.galleryItem.gid);
     final int _index = _galleryCache?.lastIndex ?? 0;
-    logger.d('lastIndex $_index');
+    // logger.d('lastIndex $_index');
     // await _pageController.fetchPreviewUntilIndex(Get.context, _index);
     NavigatorUtil.goGalleryViewPage(_index, _pageController.galleryItem.gid);
   }

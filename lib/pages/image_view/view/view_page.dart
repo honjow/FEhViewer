@@ -50,22 +50,14 @@ class GalleryViewPage extends GetView<ViewController> {
                   Expanded(
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
-                      // child: Container(),
                       onPanDown: controller.handOnPanDown,
-                      // onPanStart: (DragStartDetails details) {
-                      //   logger.d('${details.localPosition} ');
-                      // },
                       onTap: controller.tapLeft,
                     ),
                   ),
                   Expanded(
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
-                      // child: Container(),
                       onPanDown: controller.handOnPanDown,
-                      // onPanStart: (DragStartDetails details) {
-                      //   logger.d('${details.localPosition} ');
-                      // },
                       onTap: controller.tapRight,
                     ),
                   ),

@@ -343,21 +343,17 @@ class _DetailFromItem extends StatelessWidget {
           ),
           _controller.obx(
             (GalleryItem state) {
-              logger.d('_controller.obx complte');
               return _DatailWidget(state: state);
             },
-            onLoading: () {
-              logger.d('_controller.obx onLoading');
-              return Container(
-                // height: Get.size.height - _top * 3 - kHeaderHeight,
-                height: 200,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.only(bottom: 50),
-                child: const CupertinoActivityIndicator(
-                  radius: 14.0,
-                ),
-              );
-            }(),
+            onLoading: Container(
+              // height: Get.size.height - _top * 3 - kHeaderHeight,
+              height: 200,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.only(bottom: 50),
+              child: const CupertinoActivityIndicator(
+                radius: 14.0,
+              ),
+            ),
             onError: (err) {
               logger.e(' $err');
               return Container(

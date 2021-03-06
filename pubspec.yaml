@@ -3,7 +3,7 @@ description: ..
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.1.0+151
+version: 1.1.0+152
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
@@ -77,11 +77,11 @@ dependencies:
 
   # 图片相关
   cached_network_image: ^3.0.0-nullsafety
-#  extended_image: ^2.0.0
-  extended_image:
-    git:
-      url: git://github.com/fluttercandies/extended_image.git
-      ref: dev
+  extended_image: ^3.0.0
+#  extended_image:
+#    git:
+#      url: git://github.com/fluttercandies/extended_image.git
+#      ref: dev
 
   liquid_progress_indicator: ^0.3.2
 
@@ -101,17 +101,11 @@ dependencies:
   # 从分享菜单打开
   receive_sharing_intent: ^1.4.3
 
-  #device_preview: ^0.5.5
-
   # 分享
   share: ^2.0.0
 
   # 权限检查
   permission_handler: ^5.1.0+2
-#  permission_handler:
-#    git:
-#      url: https://github.com/Baseflow/flutter-permission-handler.git
-#      path: permission_handler
 
   flutter_cache_manager: ^3.0.0-nullsafety.1
 

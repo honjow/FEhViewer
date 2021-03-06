@@ -75,9 +75,6 @@ class _ViewImageState extends State<ViewImage>
         itemSer: itemSer,
         max: _ehConfigService.preloadImage.value,
       );
-
-      // 依次按顺序获取缩略图对象
-      // await _pageController.loadPriviewUntilIndex(itemIndex);
     }
 
     final GalleryPreview preview = await _pageController.getImageInfo(

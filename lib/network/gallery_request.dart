@@ -1047,11 +1047,6 @@ class Api {
 
     // logger.d('$reqJsonStr');
 
-    final dio.Options _cacheOptinos = buildCacheOptions(
-      const Duration(days: 1),
-      maxStale: const Duration(minutes: 1),
-    );
-
     final Map<String, dynamic> _params = {
       if (sourceId != null && sourceId.trim().isNotEmpty) 'nl': sourceId,
     };
@@ -1061,7 +1056,6 @@ class Api {
       url,
       options: getCacheOptions(
         forceRefresh: refresh,
-        options: dio.Options(receiveTimeout: 8000),
       ),
       params: _params,
     );

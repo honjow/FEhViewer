@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
         child: const Text('cookie 登录'),
         onPressed: () {
           Get.to(
-            () => () => LoginCookiePage(),
+            () => LoginCookiePage(),
             transition: Transition.cupertino,
           ).then((result) {
             if (result ?? false) {

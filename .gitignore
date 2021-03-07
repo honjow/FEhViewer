@@ -53,3 +53,4 @@ app.*.map.json
 /web/
 /test/
 /linux/
+.fvm/flutter_sdk
